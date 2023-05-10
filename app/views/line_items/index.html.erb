@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Line items</h1> <br /><br />
+<%= link_to "New line item", new_line_item_path %><br /><br />
+<div id="categories">
+  <table id="customers">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Koszyk id</th>
+      <th>Ilosc</th>
+      <th>Cena</th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tfoot>
+
+
+  <% @line_items.each do |line_item| %>
+    <%= render line_item %>
+  <% end %>
+    </tfoot>
+  </table>
+</div>
+
+

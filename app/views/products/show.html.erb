@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<table id="customers">
+  <thead>
+  <tr>
+    <th>Nazwa</th>
+    <th>Ilosc</th>
+    <th>Cena</th>
+    <th>Kategoria</th>
+    <th>Typ</th>
+  </tr>
+  </thead>
+<%= render @product %>
+</table>
+<div style="margin: 20px;">
+  <%= link_to "Edit this product", edit_product_path(@product) %> |
+  <%= link_to "Back to products", products_path %>
+  <br/><br/>
+  <%= button_to "Destroy this product", @product, method: :delete, class: 'btn-add' %>
+</div>

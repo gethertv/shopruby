@@ -1,0 +1,8 @@
+<tr id="<%= dom_id line_item %>">
+  <td><%= line_item.product.name %></td>
+  <td><%= line_item.cart_id %></td>
+  <td> <%= line_item.quantity %></td>
+  <td> <%= line_item.price %></td>
+  <td><%= link_to "Edytuj", { controller: 'line_items', action: 'edit', id: line_item.id } %></td>
+  <td><%= button_to 'Usuń', cart_line_item_path(line_item.cart, line_item), method: :delete %></td>
+</tr>

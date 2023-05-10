@@ -1,0 +1,51 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @cart %>
+
+
+<h1>Koszyk</h1><br />
+
+<% if @cart.line_items.empty? %>
+  <p>Koszyk jest pusty!</p>
+<% else %>
+  <table id="customers">
+    <thead>
+    <tr>
+      <th>Nazwa</th>
+      <th>Cena za jeden produkt</th>
+      <th>Ilosc</th>
+      <th>Cena za calosc</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td><%= line_item.product.name %></td>
+        <td><%= number_to_currency(line_item.price) %></td>
+        <td><%= line_item.quantity %></td>
+        <td><%= line_item.total_price %></td>
+        <td><%= button_to 'Remove',  cart_line_item_path(@cart, line_item), method: :delete, class: 'btn-add' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><b>Total:</b></td>
+      <td><b><%= @cart.total_price %></b></td>
+      <td></td>
+    </tr>
+    </tfoot>
+  </table>
+
+<% end %>
+
+
+<div><br />
+  <%= link_to "Back to carts", carts_path %>
+<br />
+<br />
+  <%= button_to "Destroy this cart",  @cart, method: :delete, class: 'btn-add'%>
+</div>

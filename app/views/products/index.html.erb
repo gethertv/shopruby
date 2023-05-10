@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Products</h1>
+<%= link_to "New product", new_product_path %><br /><br />
+
+
+<% @products.each do |product| %>
+
+  <div class="product">
+    <h3><%= product.name %></h3><br />
+    <p>Cena: <%= product.price %> PLN</p><br />
+    <p>Kategoria: <%= product.category.name %></p><br />
+    <p>Ilosc:   <%= product.quantity %> <%= product.unit_type.name %></p>
+    <br /><br />
+    <%= form_for LineItem.new do |f| %>
+      <div class="product">
+        <%= f.hidden_field :product_id, value: product.id %><br />
+        <%= f.label :quantity, "Ilość" %><br />
+        <%= f.number_field :quantity, min: 1, value: 1 %>
+        <button type="submit" class="btn-add">Add to cart</button>
+      </div>
+
+    <% end %>
+  </div>
+<% end %>
+
+
